@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card, Col, Typography, Space } from 'antd';
+import { Button, Card, Typography, Space } from 'antd';
 import { BookOutlined, UnorderedListOutlined } from '@ant-design/icons';
 
 import { AlbumModal } from '../../components';
@@ -30,35 +30,33 @@ const UserCard = (props) => {
   };
 
   return (
-    <Col>
+    <Card style={{ width: 300, margin: '0 auto' }}>
       <AlbumModal
         isModalOpen={isModalOpen}
         handleCancel={handleCancel}
         name={name}
       />
-      <Card style={{ width: 300 }}>
-        <Card.Meta title={name} description={email} />
-        <div className='card-info'>
-          <Space direction='vertical'>
-            <Text>Phone: {phone}</Text>
-            <Text>Website: {website}</Text>
-            <Text>Company: {company.name}</Text>
-          </Space>
-          <div className='buttons-wrapper'>
-            <Button
-              type='dashed'
-              icon={<UnorderedListOutlined />}
-              onClick={redirectToPostPage}
-            >
-              Posts
-            </Button>
-            <Button type='dashed' icon={<BookOutlined />} onClick={showModal}>
-              Albums
-            </Button>
-          </div>
+      <Card.Meta title={name} description={email} />
+      <div className='card-info'>
+        <Space direction='vertical'>
+          <Text>Phone: {phone}</Text>
+          <Text>Website: {website}</Text>
+          <Text>Company: {company.name}</Text>
+        </Space>
+        <div className='buttons-wrapper'>
+          <Button
+            type='dashed'
+            icon={<UnorderedListOutlined />}
+            onClick={redirectToPostPage}
+          >
+            Posts
+          </Button>
+          <Button type='dashed' icon={<BookOutlined />} onClick={showModal}>
+            Albums
+          </Button>
         </div>
-      </Card>
-    </Col>
+      </div>
+    </Card>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { message, Row, Spin, Typography } from 'antd';
+import { List, message, Spin, Typography } from 'antd';
 
 import { UserCard } from '../../components';
 import {
@@ -39,11 +39,23 @@ const Users = () => {
       {loadingStatus === 'loading' ? (
         <Spin size='large' className='spinner' />
       ) : (
-        <Row gutter={[50, 32]}>
-          {users.map((user) => (
-            <UserCard user={user} key={user.id} />
-          ))}
-        </Row>
+        <List
+          grid={{
+            gutter: [16, 16],
+            xs: 1,
+            sm: 2,
+            md: 2,
+            lg: 3,
+            xl: 3,
+            xxl: 3,
+          }}
+          dataSource={users}
+          renderItem={(user) => (
+            <List.Item>
+              <UserCard user={user} key={user.id} />
+            </List.Item>
+          )}
+        />
       )}
     </div>
   );
